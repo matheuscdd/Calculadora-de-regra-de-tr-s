@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de regra de três</title>
+    <style>
+        div {
+            display:float;
+        }
+
+        body {
+            background-color: rgb(110, 110, 226);
+            font: normal 15pt Calibri;
+            user-select: none; /* Impede o usuário de selecionar o texto */
+        }
+
+        header {
+            color: white;
+            text-align: center;
+        }
+
+        section {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            width: 480px;
+            margin: auto;
+            box-shadow: 3px 3px 10px rgba(0,0,0,0.404);
+            position:relative;
+        }
+
+        footer {
+            color:white;
+            text-align: center;
+            font-style: italic;
+        }
+
+        #x {
+            text-align: center;
+            background-color:rgba(228, 118, 197, 0.41);            
+        }
+
+        #x::placeholder { /* Assim que faz para mudar a cor do placeholder em CSS*/
+            color:rgb(136, 42, 94);
+        }
+
+        #a {
+            margin-bottom:10px;
+        }
+
+        #c {
+            margin-top:10px;
+        }
+
+        #assim {
+            position:absolute;
+            text-align: center;
+            right: 20%;
+            left: 20%;
+            background-color: rgb(204, 204, 204);
+        }
+
+        div #buton {
+            text-align: center;
+            right: 15%;
+            left:15%;
+            font-size:16pt;
+             /*Pegar formulá do bitcon no NaN, usar um alert*/
+        }
+
+        #buton {
+            text-align: center;
+            right: 15%;
+            left:15%;
+            font-size:20pt;
+            
+        }
+
+        .dojo {
+            background:rgb(147, 81, 255);
+            color: white;
+            border-radius: 10px;
+            box-shadow: 3px 3px 10px rgba(0,0,0,0.404);
+        }
+        
+    </style>
+</head>
+<body>
+    
+    <header>
+        <h1>Calculadora de regra de 3</h1>
+    </header>
+    <section>
+    <input type="number" name="a" id="a" placeholder="A" style="text-align: center" onkeyup="calcAutomatico()"> &nbsp; Está para &nbsp;
+    <input type="number" name="b" id="b" placeholder="B" maxlength="200" style="text-align: center" onkeyup="calcAutomatico()"> <!--Esse onkeyup me permite saber se o usuário está digitando-->
+
+    
+    <br/>
+    
+    <span id="assim">Assim como</span>
+    
+    <br/>
+    <input type="number" name="c" id="c" placeholder="C" style="text-align: center" onkeyup="calcAutomatico()"> &nbsp; Está para &nbsp;
+    <input type="number" name="x" id="x" placeholder="X" style="text-align: center" disabled=""> <!--Esse disable destativa o input-->
+    <!--<span id="x">X</span>-->
+    <br/>
+    <br/>
+    <div id="buton"><input type="button" value="Calcular" class="dojo" id="buton" onclick="calcManual()"></div>
+     <!--Aqui eu preciso abrir a pasta do curso HTML e pegar aquele que conta a quantidade de números que aparacem-->
+    <script>
+        function calcAutomatico () {
+            var a = parseInt(document.getElementById("a").value);
+            var b = parseInt(document.getElementById("b").value);
+            var c = parseInt(document.getElementById("c").value);
+            var x = document.getElementById("x");
+            var y = (b*c)/a;
+            if(!(isNaN(y))) {
+                x.placeholder = y; //É bom pois permite alterar só o placeholder
+                //;
+                //x.placeholder="X";
+            } else {
+                x.placeholder = "X";
+            }
+            
+        };
+
+        function calcManual() {
+            var a = parseInt(document.getElementById("a").value);
+            var b = parseInt(document.getElementById("b").value);
+            var c = parseInt(document.getElementById("c").value);
+            var x = document.getElementById("x");
+            var y = (b*c)/a;
+            if(!(isNaN(y))) {
+                x.placeholder = y;
+            } else {
+                alert("[ERRO] Você precisa digitar todos os valores para continuar!");
+            }
+        };
+
+        
+        </script>
+</section>
+        <footer>
+            <p>@Matheus</p>
+        </footer>
+</body>
+</html>
